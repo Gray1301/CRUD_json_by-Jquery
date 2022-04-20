@@ -1,0 +1,39 @@
+﻿<table class="myTable table hover" border="1">
+    <thead>
+        <tr>
+            <th>Mã SV</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Đã lấy bằng</th>
+            <th>Địa chỉ</th>
+            <th>Nguyện vọng</th>
+            <th>Khoa</th>
+            <th colspan="2">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody id="add">
+    </tbody>
+</table>
+<script>
+    function Load() {
+        for (var k in json) {
+            let check = (json[k].DaLayBang == "true") && "checked";
+            $("#add").append(
+                "<tr>" +
+                "<td>" + json[k].Ma + "</td>" +
+                "<td>" + json[k].NgaySinh + "</td>" +
+                "<td>" + json[k].GioiTinh + "</td>" +
+                "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
+                "<td>" + json[k].DiaChi + "</td>" +
+                "<td>" + json[k].NguyenVong + "</td>" +
+                "<td>" + json[k].Khoa + "</td>" +
+                "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
+                "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
+                + "</tr>"
+            );
+        }
+        $('tr:even').css('background-color', '#CCE5FF');
+    }
+    // $("#id").Load(Load());
+    Load();
+</script>

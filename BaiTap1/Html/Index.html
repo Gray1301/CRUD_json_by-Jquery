@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../Css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link href="../Css/ligne.css" rel="stylesheet" />
+    <link href="../Css/paginate.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../Jquery/paginate.js"></script>
+
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+    <!--<script src="../Jquery/jquery.js"></script>-->
+    <script src="../Jquery/JavaScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+    <script>
+        var json = [
+            { "Ma": "1", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT3" },
+            { "Ma": "2", "NgaySinh": "2000-11-04", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "Thái", "NguyenVong": "abc1", "Khoa": "CNTT" },
+            { "Ma": "3", "NgaySinh": "2000-10-05", "GioiTinh": "Nam", "DaLayBang": "flase", "DiaChi": "TháiC", "NguyenVong": "abc2", "Khoa": "CNTT" },
+            { "Ma": "4", "NgaySinh": "2000-10-06", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "TháiB", "NguyenVong": "abc3", "Khoa": "CNTT5" },
+            { "Ma": "5", "NgaySinh": "2000-12-07", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "Thái A", "NguyenVong": "abc", "Khoa": "CNTT" },
+            { "Ma": "6", "NgaySinh": "2000-12-08", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT" },
+            { "Ma": "7", "NgaySinh": "2000-12-09", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "Thái", "NguyenVong": "abc34", "Khoa": "CNTTg" },
+            { "Ma": "8", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT" },
+            { "Ma": "9", "NgaySinh": "2000-12-10", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT" },
+            { "Ma": "10", "NgaySinh": "2000-12-03", "GioiTinh": "Nữ", "DaLayBang": "true", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT" },
+        ];
+        //json.push();
+        //json.splice(5,1);
+        //json.fill("ABC", 3, 4);
+        //json[3] = { "Ma": "1", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "NguyenVong": "abc", "Khoa": "CNTT03" };
+    </script>
+</head>
+<body>
+    <div class="content1">
+        <img src="../images/Capture.PNG" width="5%" height="5%" />
+        <div class="nd1">
+            <p class="nd1_p1">BỘ TƯ PHÁP - MINISTRY OF JUSTICE</p>
+            <p class="nd1_p2">Phần mềm  hỗ trợ Pháp điển hệ thống quy phạm pháp luật</p>
+        </div>
+        <div class="nd2">
+            <p class="nd2_p1">
+                Cục kiểm tra văn bản quy phạm...
+                |<img src="../images/oKhoa.PNG" width="2%" height="2%" /> quantriphapdem
+                |<img src="../images/dangXuat.PNG" width="2%" height="2%" /> Đăng xuất
+                |<img src="../images/dauHoiCham.PNG" width="2%" height="2%" /> Trợ giúp
+            </p>
+            <p class="nd2_p2">Thứ 4 ngày 9/5/2018</p>
+        </div>
+
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Chủ đề</a></li>
+            <li><a href="#">Đề mục</a></li>
+            <li><a href="#">Phân công XDEM</a></li>
+            <li><a href="#">Thẩm định KQTD</a></li>
+            <li><a href="#">Bộ pháp điển</a></li>
+            <li><a href="#">Danh mục</a></li>
+            <li><a href="#">Quản trị</a></li>
+        </ul>
+    </div>
+    <div class="content2">
+        <div class="ct2_menu">
+            <ul>
+                <li><a href="#">Cơ quan, đơn vị</a></li>
+                <li><a href="#">Loại văn bản</a></li>
+                <li><a href="#">Loại cấu trúc văn bản</a></li>
+                <li><a href="#">Tài liệu tham khảo</a></li>
+                <li><a href="#">Văn bản mới ban hành</a></li>
+                <li><a href="#">Thứ bậc pháp lý</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="ct2_nd1">
+                <div>
+                    <h2>QUẢN LÝ SINH VIÊN</h2>
+                    <button style="width:80px" id="Add_sv"><img src="../images/dauCong.PNG" width="18%" height="18%" />Thêm</button>
+                    <!--<button style="width:60px" onclick="Sua()"> <img src="../images/but.PNG" width="18%" height="18%" />Sửa</button>
+                    <button style="width:60px"><img src="../images/thungRac.PNG" width="18%" height="18%" />Xóa</button>-->
+
+                </div>
+                <div class="search_select">
+                    <input type="text" name="name" value="" placeholder="Tìm theo địa chỉ" class="search1" id="find_diachi" />
+                    <select id="gender" onchange="Gender()">
+                        <option value="value">-Lọc theo giới tính</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nu">Nữ</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="panel" style="display:none">
+                    <div class="body">
+                        <div class="input-group">
+                            <label for="searchBox">Filtrar</label>
+                            <input type="search" id="searchBox" placeholder="Filtrar...">
+                        </div>
+                    </div>
+                </div>
+                <table class="myTable table hover" border="1">
+                    <thead>
+                        <tr>
+                            <th>Mã SV</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Đã lấy bằng</th>
+                            <th>Địa chỉ</th>
+                            <th>Nguyện vọng</th>
+                            <th>Khoa</th>
+                            <th colspan="2">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="add">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+   
+    <div id="dialog" title="Thêm Văn Bản" style="display:none">
+        <div class="form_ct">
+            <div class="form_ct">
+                <label>Mã :</label>
+                <input type="number" name="id" value="" id="Ma" style="width:40px;margin-left:100px" />
+            </div>
+
+            <label>Ngày sinh :</label>
+            <input type="date" name="id" value="" id="date" />
+        </div>
+
+        <div class="form_ct">
+            <label>Giới tính :</label>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Nam
+            </label>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Nữ
+            </label>
+        </div>
+        <div class="form_ct">
+            <label>Đã lấy bằng :</label>
+            <input type="checkbox" name="checkbox" value="" id="DaLayBang" />
+        </div>
+        <div class="form_ct">
+            <label style="margin-left:100px">Địa chỉ :</label>
+            <select class="form-select" id="form-select" aria-label="Default select example">
+                <option selected>Thái Bình</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Nghệ An">Nghệ An</option>
+                <option value="Cần Thơ">Cần Thơ</option>
+            </select>
+        </div>
+        <!--<div class="form_ct">
+            <label>Nguyện vọng :</label>
+            <textarea name="contentt" id="NguyenVong"></textarea>-->
+            <!--<script src="../Jquery/ckeditor.js"></script>
+            <script>
+                CKEDITOR.replace('contentt');
+            </script>-->
+        <!--</div>-->
+       
+
+        <div class="form_ct">
+            <label>Khoa :</label>
+            <input type="text" name="textbox" value="" id="khoa" />
+        </div>
+        <div class="form_ct">
+            <div class="main-content">
+                <div class="text-editor-header">
+                    <button type="button" class="btn" data-element="bold">
+                        <i class="fa fa-bold"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="italic">
+                        <i class="fa fa-italic"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="underline">
+                        <i class="fa fa-underline"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="insertUnorderedList">
+                        <i class="fa fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="insertOrderedList">
+                        <i class="fa fa-list-ol"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="createLink">
+                        <i class="fa fa-link"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="justifyLeft">
+                        <i class="fa fa-align-left"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="justifyCenter">
+                        <i class="fa fa-align-center"></i>
+                    </button>
+                    <button type="button" class="btn" data-element="justifyRight">
+                        <i class="fa fa-align-right"></i>
+                    </button>
+                </div>
+                <div class="content" contenteditable="true">
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Add" id="add_sv" />
+            <input type="submit" name="reset" value="Edit" id="edit_sv" />
+        </div>
+        <style>
+            .form_ct {
+                margin-top: 20px
+            }
+
+                .form_ct label {
+                    margin-right: 50px;
+                    margin-left: 50px
+                }
+
+                .form_ct input {
+                    margin-left: 50px
+                }
+        </style>
+    </div>
+</body>
+
+</html>
+<script src="https://use.fontawesome.com/a31a3f8384.js"></script>
+<script src="../Jquery/text_editor.js"></script>
+<style>
+    .ui-dialog {
+        width: 900px !important;
+    }
+
+    .form.ct {
+        margin-top: 20px !important
+    }
+    th {
+        text-align: center !important;
+        background-color: #CCE5FF
+    }
+    .btn {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .content {
+        min-height: 100px;
+        border: 5px solid #E0E0E0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
+    }
+</style>
