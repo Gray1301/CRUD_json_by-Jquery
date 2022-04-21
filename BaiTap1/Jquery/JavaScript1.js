@@ -20,118 +20,99 @@
             );
         }
         $('tr:even').css('background-color', '#CCE5FF');
-        //PhanTrang();
     }
     // $("#id").Load(Load());
-    Load();
+    // Load();
 
     //set phân trang
-    function PhanTrang() {
-let options = {
-        numberPerPage: 4, //Cantidad de datos por pagina
-        goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
-        pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
-    };
+    //let options = {
+    //    numberPerPage: 4, //Cantidad de datos por pagina
+    //    goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+    //    pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+    //};
 
-    let filterOptions = {
-        el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
-    };
+    //let filterOptions = {
+    //    el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+    //};
 
-    paginate.init('.myTable', options, filterOptions); 
-    }
-    //PhanTrang();
-    
+    //paginate.init('.myTable', options, filterOptions); 
 
     //Xóa
-    function Delete() {
-        $("td:nth-child(8)").click(function () {
-            // lấy ra class của cái td đang click
-            var this_class = $(this).attr('class');
-            for (var i = 0; i < json.length; i++) {
-                if (json[i].Ma == this_class) {
-                    json.splice(i, 1);
-                }
+    $("td:nth-child(8)").click(function () {
+        // lấy ra class của cái td đang click
+        var this_class = $(this).attr('class');
+        for (var i = 0; i < json.length; i++) {
+            if (json[i].Ma == this_class) {
+                json.splice(i, 1);
             }
+        }
+        console.log(json);
+        $("tbody tr").remove();
+        Load();
+    });
+    //Gọi dialog lên để sửa
+    $("td:last-child").click(function () {
+        // lấy ra class của cái td đang click,class set theo ma nen nó là duy nhất
+        var this_class = $(this).attr('class');
+        $('#dialog').dialog();
+        //bỏ thông tin của tr vừa click lên dialog
+        for (var k in json) {
+            if (json[k].Ma == this_class) {
+                $('#date').val(json[k].NgaySinh);
+                $('#Ma').val(json[k].Ma);
+
+                if (json[k].GioiTinh == "Nam") {
+                    var $radios = $('input:radio[name=flexRadioDefault]');
+                    $radios.filter('[value=Male]').prop('checked', true);
+                }
+                else {
+                    var $radios = $('input:radio[name=flexRadioDefault]');
+                    $radios.filter('[value=Female]').prop('checked', true);
+                }
+                if (json[k].DaLayBang == "true") {
+                    $("#DaLayBang").prop("checked", true);
+                }
+                else {
+                    $("#DaLayBang").prop("checked", false);
+                }
+                $(".content").html(json[k].NguyenVong);
+
+                $('#khoa').val(json[k].Khoa);
+            }
+        }
+        console.log($(".content").html());
+        //sửa
+        $('#edit_sv').click(function () {
+            var DaLayBang;
+            var GioiTinh;
+            if ($("#DaLayBang").prop("checked") == true) {
+                DaLayBang = "true";
+            }
+            else if ($("#DaLayBang").prop("checked") == false) {
+                DaLayBang = "false";
+            }
+            GioiTinh = $("input[name='flexRadioDefault']:checked").val();
+            if (GioiTinh == "Male") {
+                GioiTinh = "Nam";
+            }
+            if (GioiTinh == "Female") {
+                GioiTinh = "Nữ";
+
+            }
+
+            json.fill("ABC", this_class - 1, this_class);
+            json[this_class - 1] = { "Ma": $("#Ma").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "NguyenVong": $(".content").html(), "Khoa": $("#khoa").val() };
             console.log(json);
             $("tbody tr").remove();
             Load();
-            Delete();
-            Edit();
+            //Edit();
         });
-    }
-    Delete();
-    //Gọi dialog lên để sửa
-    function Edit() {
-        $("td:last-child").click(function () {
-            // lấy ra class của cái td đang click,class set theo ma nen nó là duy nhất
-            var this_class = $(this).attr('class');
-            $('#dialog').dialog();
-            //Không cho phép sửa mã
-            $('#Ma').attr('readonly', true);
-            //bỏ thông tin của tr vừa click lên dialog
-            for (var k in json) {
-                if (json[k].Ma == this_class) {
-                    $('#date').val(json[k].NgaySinh);
-                    $('#Ma').val(json[k].Ma);
+    });
 
-                    if (json[k].GioiTinh == "Nam") {
-                        var $radios = $('input:radio[name=flexRadioDefault]');
-                        $radios.filter('[value=Male]').prop('checked', true);
-                    }
-                    else {
-                        var $radios = $('input:radio[name=flexRadioDefault]');
-                        $radios.filter('[value=Female]').prop('checked', true);
-                    }
-                    if (json[k].DaLayBang == "true") {
-                        $("#DaLayBang").prop("checked", true);
-                    }
-                    else {
-                        $("#DaLayBang").prop("checked", false);
-                    }
-                    $(".content").html(json[k].NguyenVong);
-
-                    $('#khoa').val(json[k].Khoa);
-                }
-            }
-            console.log($(".content").html());
-            //sửa
-            $('#edit_sv').click(function () {
-                var DaLayBang;
-                var GioiTinh;
-                if ($("#DaLayBang").prop("checked") == true) {
-                    DaLayBang = "true";
-                }
-                else if ($("#DaLayBang").prop("checked") == false) {
-                    DaLayBang = "false";
-                }
-                GioiTinh = $("input[name='flexRadioDefault']:checked").val();
-                if (GioiTinh == "Male") {
-                    GioiTinh = "Nam";
-                }
-                if (GioiTinh == "Female") {
-                    GioiTinh = "Nữ";
-
-                }
-                json.fill("ABC", this_class - 1, this_class);
-                json[this_class - 1] = { "Ma": $("#Ma").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "NguyenVong": $(".content").html(), "Khoa": $("#khoa").val() };
-                console.log(json);
-                $("tbody tr").remove();
-                Load();
-                Delete();
-                Edit();
-
-            });
-        });
-
-    }
-    Edit();
     //Thêm
     $("#Add_sv").click(function () {
-        //Cho phép add mã, cần dòng này vì nếu gọi hàm sửa rồi thêm thì trường mã bị set readonly true
-        $('#Ma').attr('readonly', false);
         $('#dialog').dialog();
         $('#add_sv').click(function () {
-           
             //check xem người dùng nhập mã có trùng vs mã cũ ko
             var checkMaLap = true;
             for (var k in json) {
@@ -196,13 +177,11 @@ let options = {
                     + "</tr>"
                 );
                 //Load(json[k]);
-            }          
-        }
-        if ($(this).val() == "") {
-            Load();
+            }
         }
     });
 });
+//lọc theo giới tính
 function Gender() {
     $("tbody tr").remove();
     if ($("#gender").val() == "Nam") {
@@ -267,5 +246,6 @@ function Gender() {
             );
         }
         $('tr:even').css('background-color', '#CCE5FF');
+
     }
 }

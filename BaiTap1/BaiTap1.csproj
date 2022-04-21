@@ -70,8 +70,6 @@
     <Content Include="Css\ligne.css" />
     <Content Include="Css\paginate.css" />
     <Content Include="Css\style.css" />
-    <Content Include="Html\Content.html" />
-    <Content Include="Html\HtmlPage1.html" />
     <Content Include="Html\Index.html" />
     <Content Include="images\asc.gif" />
     <Content Include="images\bg.gif" />
@@ -94,6 +92,7 @@
     <Content Include="images\thungRac.PNG" />
     <Content Include="Jquery\ckeditor.js" />
     <Content Include="Jquery\JavaScript.js" />
+    <Content Include="Jquery\JavaScript1.js" />
     <Content Include="Jquery\paginate.js" />
     <Content Include="Jquery\script.js" />
     <Content Include="Jquery\text_editor.js" />
