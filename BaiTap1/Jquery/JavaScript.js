@@ -2,6 +2,7 @@
     $('tr:even').css('background-color', 'white');
     //$("td:nth-child(3)").css('color', 'blue');
     $("td:nth-child(5)").css('text-align', 'center');
+   // $('td:even').css('color', 'blue');
     function Load() {
         for (var k in json) {
             let check = (json[k].DaLayBang == "true") && "checked";
@@ -21,12 +22,14 @@
             );
         }
         $('tr:even').css('background-color', '#CCE5FF');
+        $("td:nth-child(2)").css('color', 'blue');
+       // $("td:nth-child(2),th:nth-child(2)").css('text-align', 'left');
         //PhanTrang();
         Add();
         Edit();
         Delete();
 
-    } console.log(json);
+    }// console.log(json);
     // $("#id").Load(Load());
     Load();
 
@@ -57,12 +60,9 @@
                     json.splice(i, 1);
                 }
             }
-            console.log(json);
+            //console.log(json);
             $("tbody tr").remove();
             Load();
-            //Delete();
-            //Edit();
-            //Add();
         });
     }
     Delete();
@@ -70,7 +70,8 @@
     function Edit() {
         $("td:last-child").click(function () {
             // lấy ra class của cái td đang click,class set theo mã nên nó là duy nhất
-            var this_class = $(this).attr('class');
+            let this_class = $(this).attr('class');
+           // console.log((this_class));
             $('#dialog').dialog();
             //Không cho phép sửa mã
             $('#Ma').attr('readonly', true);
@@ -81,7 +82,7 @@
                     $('#HoTen').val(json[k].HoTen);
                     $('#Ma').val(json[k].Ma);
 
-                    if (json[k].GioiTinh == "Nam") {
+                    if (json[k].GioiTinh == "Nam"){
                         var $radios = $('input:radio[name=flexRadioDefault]');
                         $radios.filter('[value=Male]').prop('checked', true);
                     }
@@ -92,7 +93,7 @@
                     if (json[k].DaLayBang == "true") {
                         $("#DaLayBang").prop("checked", true);
                     }
-                    else {
+                    else{
                         $("#DaLayBang").prop("checked", false);
                     }
                     $(".content").html(json[k].Lop);
@@ -100,9 +101,10 @@
                     $('#khoa').val(json[k].Khoa);
                 }
             }
-            console.log($(".content").html());
+            //console.log($(".content").html());
             //sửa
             $('#edit_sv').click(function () {
+              
                 var DaLayBang;
                 var GioiTinh;
                 if ($("#DaLayBang").prop("checked") == true) {
@@ -118,19 +120,28 @@
                 if (GioiTinh == "Female") {
                     GioiTinh = "Nữ";
 
+                }                
+                for (var k in json) {                   
+                    if (json[k].Ma == this_class) {
+                        json[k].HoTen = $("#HoTen").val();
+                        json[k].NgaySinh = $("#date").val();
+                        json[k].GioiTinh = GioiTinh;
+                        json[k].DaLayBang = DaLayBang;
+                        json[k].DiaChi = $('#form-select').val();
+                        json[k].Lop = $(".content").html();
+                        json[k].Khoa = $("#khoa").val();
+                        //set lại this_class vì nếu click sửa lần thứ 2 trở đi, nó vẫn lưu cái this_class cũ
+                        //=> sửa xong set lại this_class == "", thì nó chỉ sửa this_class mới
+                        console.log(this_class);
+                        this_class = "";
+                        console.log(this_class);
+                        break;                     
+                    }
                 }
-                json.fill("ABC", this_class - 1, this_class);
-                json[this_class - 1] = { "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() };
-                console.log(json);
                 $("tbody tr").remove();
                 Load();
-                //Delete();
-                //Edit();
-                //Add();
-
             });
         });
-
     }
     Edit();
     //Thêm
@@ -166,7 +177,7 @@
                         GioiTinh = "Nữ";
                     }
                     json.push({ "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() });
-                    console.log(json);
+                   // console.log(json);
                     $('tr:even').css('background-color', '#CCE5FF');
                 }
                 $("tbody tr").remove();
@@ -209,7 +220,7 @@ function Gender() {
     if ($("#gender").val() == "Nam") {
         for (var k in json) {
             if (json[k].GioiTinh == "Nam") {
-                console.log(json[k]);
+                //console.log(json[k]);
                 let check = (json[k].DaLayBang == "true") && "checked";
                 $("#add").append(
                     "<tr>" +
@@ -231,7 +242,7 @@ function Gender() {
     else if ($("#gender").val() == "Nu") {
         for (var k in json) {
             if (json[k].GioiTinh == "Nữ") {
-                console.log(json[k]);
+               // console.log(json[k]);
                 let check = (json[k].DaLayBang == "true") && "checked";
                 $("#add").append(
                     "<tr>" +

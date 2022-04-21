@@ -136,15 +136,18 @@ button{
     font-weight:bold;
 }
 td{
-    padding:5px 0px 5px 0px;
-    text-align:center
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+    font-family: Calibri !important
 }
-th{
-    text-align:center !important
+th {
+    text-align: center !important;
+    font-family: Calibri !important;
 }
 td img{
     width:10px;
     height:10px;
+   
 }
 .btn{
     width:50px !important;

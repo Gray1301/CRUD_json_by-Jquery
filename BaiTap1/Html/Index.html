@@ -36,7 +36,8 @@
         //json.push();
         //json.splice(5,1);
         //json.fill("ABC", 3, 4);
-        //json[3] = { "Ma": "1", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "Lop": "abc", "Khoa": "CNTT03" };
+        //json[3] = { "Ma": "3", "HoTen": "X", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "Lop": "abc", "Khoa": "CNTT03" };
+        //json[4] = { "Ma": "4", "HoTen": "X", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "Lop": "abc", "Khoa": "CNTT03" };
     </script>
 </head>
 <body>
@@ -85,11 +86,10 @@
             <div class="ct2_nd1">
                 <div>
                     <h2 class="QuanLySV">QUẢN LÝ SINH VIÊN</h2>
-                    <button style="width:80px;background-color:cornflowerblue;color:white" id="Add_sv">Thêm</button>
+                    <button style="width:80px;background-color:cornflowerblue;color:white;font-family:Calibri" id="Add_sv">Thêm</button>
                     <!--<img src="../images/dauCong.PNG" width="18%" height="18%" />Thêm-->
                     <!--<button style="width:60px" onclick="Sua()"> <img src="../images/but.PNG" width="18%" height="18%" />Sửa</button>
     <button style="width:60px"><img src="../images/thungRac.PNG" width="18%" height="18%" />Xóa</button>-->
-
                 </div>
                 <div class="search_select">
                     <input type="text" name="name" value="" placeholder="Tìm theo địa chỉ" class="search1" id="find_diachi" />
@@ -120,7 +120,7 @@
                             <th>Giới tính</th>
                             <th>Đã lấy bằng</th>
                             <th>Địa chỉ</th>
-                            <th>Lớp</th>
+                            <th>Sở thích</th>
                             <th>Khoa</th>
                             <th colspan="2">Thao tác</th>
                         </tr>
@@ -234,8 +234,8 @@
             </div>
             </div>
             <div>
-                <input type="submit" name="submit" value="Add" id="add_sv" style="background-color:red;color:white"/>
-                <input type="submit" name="reset" value="Edit" id="edit_sv" style="background-color:green;color:white" />
+                <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color:red;color:white"/>
+                <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color:green;color:white" />
             </div>
         </div>
 </body>
@@ -254,7 +254,11 @@
     }
     th {
         text-align: center !important;
-        background-color: #CCE5FF
+        background-color: #CCE5FF;
+        font-family: Calibri !important;
+    }
+    td {
+        font-family: Calibri !important;
     }
     .btn {
         width: 30px !important;
