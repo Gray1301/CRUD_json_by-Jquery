@@ -8,11 +8,12 @@
             $("#add").append(
                 "<tr>" +
                 "<td>" + json[k].Ma + "</td>" +
+                "<td>" + json[k].HoTen + "</td>" +
                 "<td>" + json[k].NgaySinh + "</td>" +
                 "<td>" + json[k].GioiTinh + "</td>" +
                 "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
                 "<td>" + json[k].DiaChi + "</td>" +
-                "<td>" + json[k].NguyenVong + "</td>" +
+                "<td>" + json[k].Lop + "</td>" +
                 "<td>" + json[k].Khoa + "</td>" +
                 "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
                 "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
@@ -21,30 +22,34 @@
         }
         $('tr:even').css('background-color', '#CCE5FF');
         //PhanTrang();
-    }
+        Add();
+        Edit();
+        Delete();
+
+    } console.log(json);
     // $("#id").Load(Load());
     Load();
 
     //set phân trang
     function PhanTrang() {
-let options = {
-        numberPerPage: 4, //Cantidad de datos por pagina
-        goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
-        pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
-    };
+        let options = {
+            numberPerPage: 4, //Cantidad de datos por pagina
+            goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+            pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+        };
 
-    let filterOptions = {
-        el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
-    };
+        let filterOptions = {
+            el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+        };
 
-    paginate.init('.myTable', options, filterOptions); 
+        paginate.init('.myTable', options, filterOptions);
     }
     //PhanTrang();
-    
+
 
     //Xóa
     function Delete() {
-        $("td:nth-child(8)").click(function () {
+        $("td:nth-last-child(2)").click(function () {
             // lấy ra class của cái td đang click
             var this_class = $(this).attr('class');
             for (var i = 0; i < json.length; i++) {
@@ -55,15 +60,16 @@ let options = {
             console.log(json);
             $("tbody tr").remove();
             Load();
-            Delete();
-            Edit();
+            //Delete();
+            //Edit();
+            //Add();
         });
     }
     Delete();
-    //Gọi dialog lên để sửa
+    //sửa
     function Edit() {
         $("td:last-child").click(function () {
-            // lấy ra class của cái td đang click,class set theo ma nen nó là duy nhất
+            // lấy ra class của cái td đang click,class set theo mã nên nó là duy nhất
             var this_class = $(this).attr('class');
             $('#dialog').dialog();
             //Không cho phép sửa mã
@@ -72,6 +78,7 @@ let options = {
             for (var k in json) {
                 if (json[k].Ma == this_class) {
                     $('#date').val(json[k].NgaySinh);
+                    $('#HoTen').val(json[k].HoTen);
                     $('#Ma').val(json[k].Ma);
 
                     if (json[k].GioiTinh == "Nam") {
@@ -88,7 +95,7 @@ let options = {
                     else {
                         $("#DaLayBang").prop("checked", false);
                     }
-                    $(".content").html(json[k].NguyenVong);
+                    $(".content").html(json[k].Lop);
 
                     $('#khoa').val(json[k].Khoa);
                 }
@@ -113,12 +120,13 @@ let options = {
 
                 }
                 json.fill("ABC", this_class - 1, this_class);
-                json[this_class - 1] = { "Ma": $("#Ma").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "NguyenVong": $(".content").html(), "Khoa": $("#khoa").val() };
+                json[this_class - 1] = { "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() };
                 console.log(json);
                 $("tbody tr").remove();
                 Load();
-                Delete();
-                Edit();
+                //Delete();
+                //Edit();
+                //Add();
 
             });
         });
@@ -126,56 +134,49 @@ let options = {
     }
     Edit();
     //Thêm
-    $("#Add_sv").click(function () {
-        //Cho phép add mã, cần dòng này vì nếu gọi hàm sửa rồi thêm thì trường mã bị set readonly true
-        $('#Ma').attr('readonly', false);
-        $('#dialog').dialog();
-        $('#add_sv').click(function () {
-           
-            //check xem người dùng nhập mã có trùng vs mã cũ ko
-            var checkMaLap = true;
-            for (var k in json) {
-                if (json[k].Ma == $("#Ma").val() || $("#date").val() == "" || $("#khoa").val() == "") {
-                    checkMaLap = false;
-                    break;
+    function Add() {
+        $("#Add_sv").click(function () {
+            //Cho phép add mã, cần dòng này vì nếu gọi hàm sửa rồi thêm thì trường mã bị set readonly true
+            $('#Ma').attr('readonly', false);
+            $('#dialog').dialog();
+            $('#add_sv').click(function () {
+
+                //check xem người dùng nhập mã có trùng vs mã cũ ko
+                var checkMaLap = true;
+                for (var k in json) {
+                    if (json[k].Ma == $("#Ma").val() || $("#date").val() == "" || $("#khoa").val() == "") {
+                        checkMaLap = false;
+                        break;
+                    }
                 }
-            }
-            var DaLayBang;
-            var GioiTinh;
-            if (checkMaLap) {
-                if ($("#DaLayBang").prop("checked") == true) {
-                    DaLayBang = "true";
+                var DaLayBang;
+                var GioiTinh;
+                if (checkMaLap) {
+                    if ($("#DaLayBang").prop("checked") == true) {
+                        DaLayBang = "true";
+                    }
+                    else {
+                        DaLayBang = "false";
+                    }
+                    GioiTinh = $("input[name='flexRadioDefault']:checked").val();
+                    if (GioiTinh == "Male") {
+                        GioiTinh = "Nam";
+                    }
+                    if (GioiTinh == "Female") {
+                        GioiTinh = "Nữ";
+                    }
+                    json.push({ "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() });
+                    console.log(json);
+                    $('tr:even').css('background-color', '#CCE5FF');
                 }
-                else {
-                    DaLayBang = "false";
-                }
-                GioiTinh = $("input[name='flexRadioDefault']:checked").val();
-                if (GioiTinh == "Male") {
-                    GioiTinh = "Nam";
-                }
-                if (GioiTinh == "Female") {
-                    GioiTinh = "Nữ";
-                }
-                json.push({ "Ma": $("#Ma").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "NguyenVong": $(".content").html(), "Khoa": $("#khoa").val() });
-                console.log(json);
-                let check = ($("#DaLayBang") == true) && true;
-                $("#add").append(
-                    "<tr>" +
-                    "<td>" + $("#Ma").val() + "</td>" +
-                    "<td>" + $("#date").val() + "</td>" +
-                    "<td>" + GioiTinh + "</td>" +
-                    "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + DaLayBang + "' />    </td>" +
-                    "<td>" + $('#form-select').val() + "</td>" +
-                    "<td>" + $(".content").html() + "</td>" +
-                    "<td>" + $("#khoa").val() + "</td>" +
-                    "<td" + " class='" + $("#Ma").val() + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
-                    "<td" + " class='" + $("#Ma").val() + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
-                    + "</tr>"
-                );
-                $('tr:even').css('background-color', '#CCE5FF');
-            }
+                $("tbody tr").remove();
+                Load();
+                //Delete();
+                //Edit();
+            });
         });
-    });
+    }
+    Add();
     //Tìm theo địa chỉ
     $("#find_diachi").keypress(function () {
         $("tbody tr").remove();
@@ -189,14 +190,14 @@ let options = {
                     "<td>" + json[k].GioiTinh + "</td>" +
                     "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
                     "<td>" + json[k].DiaChi + "</td>" +
-                    "<td>" + json[k].NguyenVong + "</td>" +
+                    "<td>" + json[k].Lop + "</td>" +
                     "<td>" + json[k].Khoa + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
                     + "</tr>"
                 );
                 //Load(json[k]);
-            }          
+            }
         }
         if ($(this).val() == "") {
             Load();
@@ -217,7 +218,7 @@ function Gender() {
                     "<td>" + json[k].GioiTinh + "</td>" +
                     "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
                     "<td>" + json[k].DiaChi + "</td>" +
-                    "<td>" + json[k].NguyenVong + "</td>" +
+                    "<td>" + json[k].Lop + "</td>" +
                     "<td>" + json[k].Khoa + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
@@ -239,7 +240,7 @@ function Gender() {
                     "<td>" + json[k].GioiTinh + "</td>" +
                     "<td>" + "<input  " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
                     "<td>" + json[k].DiaChi + "</td>" +
-                    "<td>" + json[k].NguyenVong + "</td>" +
+                    "<td>" + json[k].Lop + "</td>" +
                     "<td>" + json[k].Khoa + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"
@@ -255,11 +256,12 @@ function Gender() {
             $("#add").append(
                 "<tr>" +
                 "<td>" + json[k].Ma + "</td>" +
+                "<td>" + json[k].HoTen + "</td>" +
                 "<td>" + json[k].NgaySinh + "</td>" +
                 "<td>" + json[k].GioiTinh + "</td>" +
                 "<td>" + "<input " + check + " type='checkbox' name='checkbox' value= '" + json[k].DaLayBang + "' />    </td>" +
                 "<td>" + json[k].DiaChi + "</td>" +
-                "<td>" + json[k].NguyenVong + "</td>" +
+                "<td>" + json[k].Lop + "</td>" +
                 "<td>" + json[k].Khoa + "</td>" +
                 "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
                 "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/folder.PNG' width='10px' height='10px'/>" + "</td>"

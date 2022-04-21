@@ -3,14 +3,15 @@
 }
 .content1 {
     display: flex;
-    background-color: ghostwhite
+    background-color: ghostwhite;
+    background-image: url('../images/imagebackground.PNG');
+    background-size:100% 100%;
 }
 .content1 img{
     margin:1% 2% 0% 2%;
 }
 .nd1{
-    margin: 1% 0% 0% 1%;
-    background-color:ghostwhite
+    margin: 1% 0% 0% 0%;
 }
 .nd1_p1{
     color:gray;
@@ -19,26 +20,30 @@
     color:blue;
     font-style:italic;
     font-weight:bold;
+    margin:0px !important;
 }
 .nd2 {
     text-align: right;
     margin-top: -1%;
-    margin-left: 27%;    
-    width: 35%;
+    margin-left: 31%;    
+    width: 34%;
     height: 5%;
+    
 }
 .nd2_p1 {
-    box-shadow: 3px 3px gray;
+   
 }
 .nd2 img{
     margin:0px;
 }
 .nd2_p2{
-    margin-top:13%;
+    margin-top:12%;
+    margin-right:-1%;
     margin-bottom:0px;
+    color:whitesmoke;
 }
 .menu{
-    margin-top:-15px;
+    margin-top:-16px;
     padding:0px;
 }
 .menu ul {
@@ -60,9 +65,13 @@
     font-family:Calibri;
 }
 .ct2_menu{
-    width:15%;
+    width:13%;
+    margin-top:-32px;
 }
-    .ct2_menu ul li {
+.ct2_menu ul{
+    padding:0px;
+}
+.ct2_menu ul li {
         list-style: none;
         background-color: #CCE5FF;
         border: 1px solid white;
@@ -83,17 +92,24 @@
 }
 .ct2_nd1{
     display:flex;
-    margin-left:10px
+    margin-left:3px
 }
 .ct2_nd1 p{
     font-weight:bold;
     text-transform:uppercase;
     font-size:15px;
+    margin:0px;
 }
-.search_select{
-    width:900px;
-   text-align:right ;
-   margin-top:48px;
+.QuanLySV{
+    margin:0px;
+    margin-top:-5px;
+    margin-bottom:5px;
+}
+.search_select {
+    width: 900px;
+    text-align: right;
+    margin-top: 30px;
+    margin-left:173px
 }
 .search {
     border-color: deepskyblue;
@@ -106,8 +122,9 @@ table {
     background-color: #CCE5FF
 }
 .table {
-   
-    margin-left:10px
+    max-width:108% !important;
+   width:108% !important;
+    margin-left:3px
 }
 /*.td_image{
         width:60px
@@ -130,8 +147,24 @@ td img{
     height:10px;
 }
 .btn{
-    width:100px !important;
-    height:100px !important;
+    width:50px !important;
+    height:50px !important;
 }
+.form_ct label{
+    margin:0px !important;
+}
+.form_ct{
+    margin-top:20px;
+}
+label {
+    width: 100px;
+    display: inline-block;
+   
+}
+.form-select{
+    width:202px !important;
+}
+
+
 
 
