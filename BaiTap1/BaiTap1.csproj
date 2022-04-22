@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\Popup.css" />
     <Content Include="Css\ligne.css" />
     <Content Include="Css\paginate.css" />
     <Content Include="Css\style.css" />
+    <Content Include="Html\Form.html" />
     <Content Include="Html\Index.html" />
     <Content Include="images\asc.gif" />
     <Content Include="images\bg.gif" />
@@ -95,9 +97,7 @@
     <Content Include="images\sort.gif" />
     <Content Include="images\thungRac.PNG" />
     <Content Include="Jquery\JavaScript.js" />
-    <Content Include="Jquery\JavaScript1.js" />
     <Content Include="Jquery\paginate.js" />
-    <Content Include="Jquery\script.js" />
     <Content Include="Jquery\text_editor.js" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <title></title>
     <link href="../Css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link href="../Css/ligne.css" rel="stylesheet" />
     <link href="../Css/paginate.css" rel="stylesheet" />
+    <!--<link href="../Css/abc.css" rel="stylesheet" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../Jquery/paginate.js"></script>
-
+    <link href="../Css/Popup.css" rel="stylesheet" />
     <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <!--<script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -18,11 +18,10 @@
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
             crossorigin="anonymous"></script>
     <script src="../Jquery/JavaScript.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    
     <script>
         var json = [
-            { "Ma": "1","HoTen":"Hoàng Văn B", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "Lop": "abc", "Khoa": "CNTT3" },
+            { "Ma": "1", "HoTen": "Hoàng Văn B", "NgaySinh": "2000-12-03", "GioiTinh": "Nam", "DaLayBang": "false", "DiaChi": "Thái", "Lop": "abc", "Khoa": "CNTT3" },
             { "Ma": "2", "HoTen": "Hoàng Văn A", "NgaySinh": "2000-11-04", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "Thái", "Lop": "abc1", "Khoa": "CNTT" },
             { "Ma": "3", "HoTen": "Hoàng Văn C", "NgaySinh": "2000-10-05", "GioiTinh": "Nam", "DaLayBang": "flase", "DiaChi": "TháiC", "Lop": "abc2", "Khoa": "CNTT" },
             { "Ma": "4", "HoTen": "Hoàng Văn D", "NgaySinh": "2000-10-06", "GioiTinh": "Nam", "DaLayBang": "true", "DiaChi": "TháiB", "Lop": "abc3", "Khoa": "CNTT5" },
@@ -81,15 +80,15 @@
                 <li><a href="#">Thứ bậc pháp lý</a></li>
             </ul>
         </div>
-        <img src="../images/cotDoc.PNG" width="6px" style="margin-top:-15px;margin-left:-2px"/>
+        <img src="../images/cotDoc.PNG" width="6px" style="margin-top:-15px;margin-left:-2px" />
         <div>
             <div class="ct2_nd1">
                 <div>
                     <h2 class="QuanLySV">QUẢN LÝ SINH VIÊN</h2>
-                    <button style="width:80px;background-color:cornflowerblue;color:white;font-family:Calibri" id="Add_sv">Thêm</button>
+                    <a href="#xmas-popup" class="buttonThem">THÊM</a>
                     <!--<img src="../images/dauCong.PNG" width="18%" height="18%" />Thêm-->
                     <!--<button style="width:60px" onclick="Sua()"> <img src="../images/but.PNG" width="18%" height="18%" />Sửa</button>
-    <button style="width:60px"><img src="../images/thungRac.PNG" width="18%" height="18%" />Xóa</button>-->
+                    <button style="width:60px"><img src="../images/thungRac.PNG" width="18%" height="18%" />Xóa</button>-->
                 </div>
                 <div class="search_select">
                     <input type="text" name="name" value="" placeholder="Tìm theo địa chỉ" class="search1" id="find_diachi" />
@@ -129,115 +128,15 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
-   
-    <div id="dialog" title="Thêm Sinh Viên" style="display:none">
-        <div style="display:flex">
-            <div>
-                <div class="form_ct">
-                    <label>Mã:</label>
-                    <input type="number" name="id" value="" id="Ma" />
-                </div>
-                <div class="form_ct">
-                    <label>Họ tên:</label>
-                    <input type="text" name="id" value="" id="HoTen" />
-                </div>
-                <div class="form_ct">
-                    <label>Giới tính:</label>
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Nam
-                    </label>
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female" style="margin-left:-50px">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Nữ
-                    </label>
-                </div>
-                <div class="form_ct">
-                    <label>Ngày sinh:</label>
-                    <input type="date" name="id" value="" id="date" />
-                </div>
-            </div>
-            <div style="margin-left:30px">
-                <div class="form_ct">
-                    <label>Địa chỉ:</label>
-                    <select class="form-select" id="form-select" aria-label="Default select example">
-                        <option selected>Thái Bình</option>
-                        <option value="Hà Nội">Hà Nội</option>
-                        <option value="Nghệ An">Nghệ An</option>
-                        <option value="Cần Thơ">Cần Thơ</option>
-                    </select>
-                </div>
-                <div class="form_ct">
-                    <label>Khoa:</label>
-                    <input type="text" name="textbox" value="" id="khoa" />
-                </div>
-                <div class="form_ct">
-                    <label>Đã lấy bằng:</label>
-                    <input type="checkbox" name="checkbox" value="" id="DaLayBang" />
-                </div>
-            </div>
+    <div id="xmas-popup" class="popup" href="#">
+        <div class="popup-content">
+            <!--Load Form vào đây-->
+            <a href="#" class="close">x</a>
+            
         </div>
-       
-       
-      
-        <!--<div class="form_ct">
-    <label>Nguyện vọng :</label>
-    <textarea name="contentt" id="Lop"></textarea>-->
-        <!--<script src="../Jquery/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('contentt');
-    </script>-->
-        <!--</div>-->
-
-
-     
-        <div class="form_ct">
-            <label >Sở thích:</label>
-            <div class="form_ct">
-                <div class="main-content">
-                    <div class="text-editor-header">
-                        <button type="button" class="btn" data-element="bold">
-                            <i class="fa fa-bold"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="italic">
-                            <i class="fa fa-italic"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="underline">
-                            <i class="fa fa-underline"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="insertUnorderedList">
-                            <i class="fa fa-list-ul"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="insertOrderedList">
-                            <i class="fa fa-list-ol"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="createLink">
-                            <i class="fa fa-link"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="justifyLeft">
-                            <i class="fa fa-align-left"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="justifyCenter">
-                            <i class="fa fa-align-center"></i>
-                        </button>
-                        <button type="button" class="btn" data-element="justifyRight">
-                            <i class="fa fa-align-right"></i>
-                        </button>
-                    </div>
-                    <div class="content" contenteditable="true">
-
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div>
-                <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color:red;color:white"/>
-                <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color:green;color:white" />
-            </div>
-        </div>
+    </div>
 </body>
 
 </html>
@@ -269,7 +168,7 @@
         border: 3px solid #E0E0E0;
         margin-top: 10px;
         margin-bottom: 10px;
-        width:640px
+        width:540px
         
     }
     container {
@@ -277,5 +176,14 @@
     }
     .ui-draggable-handle {
         background-color: #CCE5FF
+    }
+    .buttonThem {
+        color: black;
+        background-color: #CCE5FF;
+        text-decoration: none;
+        font-family: Calibri;
+        padding: 3px;
+        border: solid;
+        border-width:1px;
     }
 </style>

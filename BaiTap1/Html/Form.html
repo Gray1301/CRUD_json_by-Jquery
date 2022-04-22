@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../Css/style.css" rel="stylesheet" />
+    <link href="../Css/ligne.css" rel="stylesheet" />
+    <link href="../Css/paginate.css" rel="stylesheet" />
+    <script src="../Jquery/text_editor.js"></script>
+    <script src="../Jquery/paginate.js"></script>
+    <script src="https://use.fontawesome.com/a31a3f8384.js"></script>
+
+    <script src="../Jquery/JavaScript.js"></script>
+</head>
+<body>
+    <h2 style="text-align:center">SINH VIÊN</h2>
+    <a href="#" class="close">x</a>
+
+    <div id="dialog" title="Thêm Sinh Viên">
+        <div>
+            <div>
+                <div class="form_ct">
+                    <label>Mã:</label>
+                    <input type="number" name="id" value="" id="Ma" />
+                </div>
+                <div class="form_ct">
+                    <label>Họ tên:</label>
+                    <input type="text" name="id" value="" id="HoTen" />
+                </div>
+                <div class="form_ct">
+                    <label>Địa chỉ:</label>
+                    <select class="form-select" id="form-select" aria-label="Default select example">
+                        <option selected>Thái Bình</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="Nghệ An">Nghệ An</option>
+                        <option value="Cần Thơ">Cần Thơ</option>
+                    </select>
+                </div>
+                <div class="form_ct">
+                    <label>Khoa:</label>
+                    <input type="text" name="textbox" value="" id="khoa" />
+                </div>
+                <div class="form_ct">
+                    <label>Ngày sinh:</label>
+                    <input type="date" name="id" value="" id="date" />
+                </div>
+                <div class="form_ct">
+                    <label>Giới tính:</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Nam
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female" style="margin-left:-50px">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Nữ
+                    </label>
+                </div>
+
+            </div>
+            <div class="form_ct">
+                <label>Đã lấy bằng:</label>
+                <input type="checkbox" name="checkbox" value="" id="DaLayBang" />
+            </div>
+        </div>
+        <div class="form_ct">
+            <label>Sở thích:</label>
+            <div class="form_ct">
+                <div class="main-content">
+                    <div class="text-editor-header">
+                        <button type="button" class="btn" data-element="bold">
+                            <i class="fa fa-bold"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="italic">
+                            <i class="fa fa-italic"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="underline">
+                            <i class="fa fa-underline"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="insertUnorderedList">
+                            <i class="fa fa-list-ul"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="insertOrderedList">
+                            <i class="fa fa-list-ol"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="createLink">
+                            <i class="fa fa-link"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="justifyLeft">
+                            <i class="fa fa-align-left"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="justifyCenter">
+                            <i class="fa fa-align-center"></i>
+                        </button>
+                        <button type="button" class="btn" data-element="justifyRight">
+                            <i class="fa fa-align-right"></i>
+                        </button>
+                    </div>
+                    <div class="content" contenteditable="true">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color:red;color:white;padding:6px" />
+            <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color: green; color: white; padding: 6px" />
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        console.log(call_class - 1);
+        //bỏ tr đang click lên popup
+        for (var k in json) {
+            if (json[k].Ma == call_class) {
+                $('#date').val(json[k].NgaySinh);
+                $('#date').val(json[k].NgaySinh);
+                $('#HoTen').val(json[k].HoTen);
+                $('#Ma').val(json[k].Ma);
+
+                if (json[k].GioiTinh == "Nam") {
+                    var $radios = $('input:radio[name=flexRadioDefault]');
+                    $radios.filter('[value=Male]').prop('checked', true);
+                }
+                else {
+                    var $radios = $('input:radio[name=flexRadioDefault]');
+                    $radios.filter('[value=Female]').prop('checked', true);
+                }
+                if (json[k].DaLayBang == "true") {
+                    $("#DaLayBang").prop("checked", true);
+                }
+                else {
+                    $("#DaLayBang").prop("checked", false);
+                }
+                $(".content").html(json[k].Lop);
+
+                $('#khoa').val(json[k].Khoa);
+            }
+        }
+        $('#edit_sv').click(function () {
+            var DaLayBang;
+            var GioiTinh;
+            if ($("#DaLayBang").prop("checked") == true) {
+                DaLayBang = "true";
+            }
+            else if ($("#DaLayBang").prop("checked") == false) {
+                DaLayBang = "false";
+            }
+            GioiTinh = $("input[name='flexRadioDefault']:checked").val();
+            if (GioiTinh == "Male") {
+                GioiTinh = "Nam";
+            }
+            if (GioiTinh == "Female") {
+                GioiTinh = "Nữ";
+
+            }
+
+            for (var k in json) {
+                if (json[k].Ma == call_class) {
+                    //Không update mã dù người dùng sửa mã:Mã ko cho sửa
+                    json[k].HoTen = $("#HoTen").val();
+                    json[k].NgaySinh = $("#date").val();
+                    json[k].GioiTinh = GioiTinh;
+                    json[k].DaLayBang = DaLayBang;
+                    json[k].DiaChi = $('#form-select').val();
+                    json[k].Lop = $(".content").html();
+                    json[k].Khoa = $("#khoa").val();
+                }
+            }          
+            $("tbody tr").remove();
+            Load();
+        });
+    });
+</script>
