@@ -9,7 +9,6 @@
     <script src="../Jquery/text_editor.js"></script>
     <script src="../Jquery/paginate.js"></script>
     <script src="https://use.fontawesome.com/a31a3f8384.js"></script>
-
     <script src="../Jquery/JavaScript.js"></script>
 </head>
 <body>
@@ -96,7 +95,6 @@
                         </button>
                     </div>
                     <div class="content" contenteditable="true">
-
                     </div>
                 </div>
             </div>
@@ -104,6 +102,7 @@
         <div>
             <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color:red;color:white;padding:6px" />
             <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color: green; color: white; padding: 6px" />
+            <input type="submit" name="reset" value="Đặt lại" id="reset" style="background-color: dimgrey; color: white; padding: 6px" />
         </div>
     </div>
 </body>
@@ -112,7 +111,7 @@
     $(document).ready(function () {
         console.log(call_class - 1);
         //bỏ tr đang click lên popup
-        for (var k in json) {
+        for (var k in json){
             if (json[k].Ma == call_class) {
                 $('#date').val(json[k].NgaySinh);
                 $('#date').val(json[k].NgaySinh);
@@ -134,7 +133,6 @@
                     $("#DaLayBang").prop("checked", false);
                 }
                 $(".content").html(json[k].Lop);
-
                 $('#khoa').val(json[k].Khoa);
             }
         }
@@ -171,5 +169,12 @@
             $("tbody tr").remove();
             Load();
         });
+    });
+    $("#reset").click(function (){
+        $('#date').val("");
+        $('#HoTen').val("");
+        $('#Ma').val("");
+        $(".content").html("");
+        $('#khoa').val("");
     });
 </script>
