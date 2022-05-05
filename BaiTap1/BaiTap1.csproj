@@ -95,7 +95,10 @@
     <Content Include="images\previous.gif" />
     <Content Include="images\QuocHuy.png" />
     <Content Include="images\sort.gif" />
+    <Content Include="images\sua.jpg" />
+    <Content Include="images\sua.png" />
     <Content Include="images\thungRac.PNG" />
+    <Content Include="Jquery\Edit_SV.js" />
     <Content Include="Jquery\JavaScript.js" />
     <Content Include="Jquery\paginate.js" />
     <Content Include="Jquery\text_editor.js" />

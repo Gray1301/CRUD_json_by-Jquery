@@ -129,10 +129,10 @@
     margin-left: 173px
 }
 
-.search {
+.search1 {
     border-color: deepskyblue;
     font-style: italic;
-    background-color: #E5FFCC;
+    background-color: #CCFFFF;
 }
 
 table {
@@ -169,8 +169,8 @@ th {
 }
 
 td img {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 .btn {
@@ -183,14 +183,24 @@ td img {
 }
 
 .form_ct {
-    margin-top: 20px;
+    margin-top: 19px;
+    margin-left: 30px !important;
+    display:inline-block !important
 }
-
+.form_ct input{
+    width:350px;
+}
 label {
     width: 100px;
     display: inline-block;
 }
 
 .form-select {
-    width: 202px !important;
+    width: 358px !important;
+}
+.form-check-input{
+    width:10px !important
+}
+#DaLayBang{
+    width:10px
 }
