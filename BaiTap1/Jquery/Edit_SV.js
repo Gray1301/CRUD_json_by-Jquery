@@ -30,37 +30,40 @@
         if ($("#HoTen").val() == "" || $("#Ma").val() == "" || $("#Khoa").val() == "") {
             alert("Vui lòng nhập đủ thông tin !!!");
         }
-        var DaLayBang;
-        var GioiTinh;
-        if ($("#DaLayBang").prop("checked") == true) {
-            DaLayBang = "true";
-        }
-        else if ($("#DaLayBang").prop("checked") == false) {
-            DaLayBang = "false";
-        }
-        GioiTinh = $("input[name='flexRadioDefault']:checked").val();
-        if (GioiTinh == "Male") {
-            GioiTinh = "Nam";
-        }
-        if (GioiTinh == "Female") {
-            GioiTinh = "Nữ";
-
-        }
-
-        for (var k in json) {
-            if (json[k].Ma == call_class) {
-                //Không update mã dù người dùng sửa mã:Mã ko cho sửa
-                json[k].HoTen = $("#HoTen").val();
-                json[k].NgaySinh = $("#date").val();
-                json[k].GioiTinh = GioiTinh;
-                json[k].DaLayBang = DaLayBang;
-                json[k].DiaChi = $('#form-select').val();
-                json[k].Lop = $(".content").html();
-                json[k].Khoa = $("#khoa").val();
+        else {
+            var DaLayBang;
+            var GioiTinh;
+            if ($("#DaLayBang").prop("checked") == true) {
+                DaLayBang = "true";
             }
+            else if ($("#DaLayBang").prop("checked") == false) {
+                DaLayBang = "false";
+            }
+            GioiTinh = $("input[name='flexRadioDefault']:checked").val();
+            if (GioiTinh == "Male") {
+                GioiTinh = "Nam";
+            }
+            if (GioiTinh == "Female") {
+                GioiTinh = "Nữ";
+
+            }
+
+            for (var k in json) {
+                if (json[k].Ma == call_class) {
+                    //Không update mã dù người dùng sửa mã:Mã ko cho sửa
+                    json[k].HoTen = $("#HoTen").val();
+                    json[k].NgaySinh = $("#date").val();
+                    json[k].GioiTinh = GioiTinh;
+                    json[k].DaLayBang = DaLayBang;
+                    json[k].DiaChi = $('#form-select').val();
+                    json[k].Lop = $(".content").html();
+                    json[k].Khoa = $("#khoa").val();
+                }
+            }
+            $("tbody tr").remove();
+            Load();
+            alert("Đã sửa");
         }
-        $("tbody tr").remove();
-        Load();
     });
 });
 $("#reset").click(function () {

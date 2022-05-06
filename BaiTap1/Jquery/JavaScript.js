@@ -37,7 +37,7 @@ $(document).ready(function () {
         if (keycode == '13') {
             $("tbody tr").remove();
             for (var k in json) {
-                if (json[k].DiaChi == $(this).val()) {
+                if (json[k].DiaChi.includes($(this).val())) {
                     let check = (json[k].DaLayBang == "true") && "checked";
                     $("#add").append(
                         "<tr>" +
@@ -49,7 +49,7 @@ $(document).ready(function () {
                         "<td>" + json[k].DiaChi + "</td>" +
                         "<td>" + json[k].Lop + "</td>" +
                         "<td>" + json[k].Khoa + "</td>" +
-                        "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='7px' height='7px'/> " + "</td>" +
+                        "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='5px' height='5px'/> " + "</td>" +
                         "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/sua.PNG' width='7px' height='7px'/>" + "</td>"
                         + "</tr>"
                     );
@@ -82,7 +82,7 @@ function Load() {
             "<td>" + json[k].DiaChi + "</td>" +
             "<td>" + json[k].Lop + "</td>" +
             "<td>" + json[k].Khoa + "</td>" +
-            "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/>  " + "</td>" +
+            "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='5px' height='5px'/>  " + "</td>" +
             "<td" + " class='" + json[k].Ma + "'>" + "<a href='#xmas-popup'>" + "<img src = '../images/sua.PNG' width='50px' height='50px'/>" + "</a>" + "</td>"
             + "</tr>"
         );
@@ -92,7 +92,7 @@ function Load() {
     $("td:nth-child(2),td:nth-child(6),td:nth-child(7),td:nth-child(8)").css('text-align', 'left');
     $('tr:even').css('background-color', '#CCE5FF');
     $("td:nth-child(2)").css('color', 'blue');
-    $("td:nth-child(1)").css('color', 'blue');
+    
     //PhanTrang();
     //Add();
     Edit();
@@ -190,7 +190,7 @@ function Gender() {
                     "<td>" + json[k].DiaChi + "</td>" +
                     "<td>" + json[k].Lop + "</td>" +
                     "<td>" + json[k].Khoa + "</td>" +
-                    "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='10px' height='10px'/> " + "</td>" +
+                    "<td" + " class='" + json[k].Ma + "'>" + "<img src = '../images/dauX.PNG' width='5px' height='5px'/> " + "</td>" +
                     "<td" + " class='" + json[k].Ma + "'>" + "<a href='#xmas-popup'>" + "<img src = '../images/sua.PNG' width='10px' height='10px'/>" + "</a>" + "</td>"
                     + "</tr>"
                 );

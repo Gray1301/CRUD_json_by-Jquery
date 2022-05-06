@@ -41,7 +41,7 @@
 
 .nd2_p2 {
     margin-top: 12%;
-    margin-right: -1%;
+    margin-right: -0.5%;
     margin-bottom: 0px;
     color: whitesmoke;
 }
@@ -126,10 +126,11 @@
     width: 900px;
     text-align: right;
     margin-top: 30px;
-    margin-left: 173px
+    margin-left: 171.5px
 }
 
 .search1 {
+    height:25px;
     border-color: deepskyblue;
     font-style: italic;
     background-color: #CCFFFF;
@@ -169,8 +170,10 @@ th {
 }
 
 td img {
-    width: 20px;
-    height: 20px;
+    vertical-align:middle;
+    margin-top:10px;
+    width: 13px;
+    height: 13px;
 }
 
 .btn {
@@ -185,10 +188,12 @@ td img {
 .form_ct {
     margin-top: 19px;
     margin-left: 30px !important;
-    display:inline-block !important
+   
 }
 .form_ct input{
     width:350px;
+    border-radius:4px;
+    border-width:1px
 }
 label {
     width: 100px;
@@ -197,9 +202,11 @@ label {
 
 .form-select {
     width: 358px !important;
+    border-radius: 4px
 }
 .form-check-input{
-    width:10px !important
+    width:10px !important;   
+ 
 }
 #DaLayBang{
     width:10px
