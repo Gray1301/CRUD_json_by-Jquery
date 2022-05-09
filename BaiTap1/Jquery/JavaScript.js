@@ -97,25 +97,27 @@ function Load() {
     //Add();
     Edit();
     Delete();
-
 }
 function Add() {
     $('#add_sv').click(function () {
         //check xem người dùng nhập mã có trùng vs mã cũ ko
         var checkMaLap = true;
         if ($("#Ma").val() == "" || $("#HoTen").val() == "") {
-            alert("Vui lòng nhập đủ thông tin cần thiết ?")
-        }
+            alert("Vui lòng nhập đủ thông tin cần thiết ?");
+           
+        }   
         for (var k in json) {
-            if (json[k].Ma == $("#Ma").val() || $("#date").val() == "" || $("#khoa").val() == "") {
+            if (json[k].Ma == $("#Ma").val()) {
                 checkMaLap = false;
-                alert("Mã bị trùng lặp")
                 break;
             }
         }
         var DaLayBang;
         var GioiTinh;
-        if (checkMaLap) {
+        if (checkMaLap == false) {
+            alert("Mã bị trùng !");
+        }
+        else if (checkMaLap == true && $("#Ma").val() != "" || $("#HoTen").val() != "") {
             if ($("#DaLayBang").prop("checked") == true) {
                 DaLayBang = "true";
             }
@@ -129,8 +131,11 @@ function Add() {
             if (GioiTinh == "Female") {
                 GioiTinh = "Nữ";
             }
-            json.push({ "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": $("#date").val(), "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() });
-            // console.log(json);
+            var NgaySinh = $("#date").val();
+            const words = NgaySinh.split('-');
+            var AddNgaySinh = words[2] + "-" + words[1] + "-" + words[0];
+            json.push({ "Ma": $("#Ma").val(), "HoTen": $("#HoTen").val(), "NgaySinh": AddNgaySinh, "GioiTinh": GioiTinh, "DaLayBang": DaLayBang, "DiaChi": $('#form-select').val(), "Lop": $(".content").html(), "Khoa": $("#khoa").val() });
+            alert("Đã thêm");
             $('tr:even').css('background-color', '#CCE5FF');
         }
        
@@ -168,8 +173,7 @@ function Delete() {
         Load();
         $("td:nth-child(1)").css('text-align', 'right');
         $("td:nth-child(2),td:nth-child(6),td:nth-child(7),td:nth-child(8)").css('text-align', 'left');
-        }
-        
+        }      
     });
 }
 //Lọc theo giới tính

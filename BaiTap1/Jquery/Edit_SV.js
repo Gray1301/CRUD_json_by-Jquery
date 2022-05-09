@@ -3,8 +3,11 @@
     //bỏ tr đang click lên popup
     for (var k in json) {
         if (json[k].Ma == call_class) {
-            $('#date').val(json[k].NgaySinh);
-            $('#date').val(json[k].NgaySinh);
+            //chuyển date thành dạng yyyy/mm/dd mới set value cho input được
+            var NgaySinh = json[k].NgaySinh;
+            const words = NgaySinh.split('-');
+            var AddNgaySinh = words[2] + "-" + words[1] + "-" + words[0];
+            $('#date').val(AddNgaySinh);
             $('#HoTen').val(json[k].HoTen);
             $('#Ma').val(json[k].Ma);
 
@@ -47,12 +50,14 @@
                 GioiTinh = "Nữ";
 
             }
-
+            var NgaySinh = $("#date").val();
+            const words = NgaySinh.split('-');
+            var EditNgaySinh = words[2] + "-" + words[1] + "-" + words[0];
             for (var k in json) {
                 if (json[k].Ma == call_class) {
                     //Không update mã dù người dùng sửa mã:Mã ko cho sửa
                     json[k].HoTen = $("#HoTen").val();
-                    json[k].NgaySinh = $("#date").val();
+                    json[k].NgaySinh = EditNgaySinh;
                     json[k].GioiTinh = GioiTinh;
                     json[k].DaLayBang = DaLayBang;
                     json[k].DiaChi = $('#form-select').val();
