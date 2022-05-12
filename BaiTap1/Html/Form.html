@@ -12,58 +12,66 @@
     <script src="../Jquery/JavaScript.js"></script>
 </head>
 <body>
-    <h2 style="text-align:center">SINH VIÊN</h2>
-    <a href="#" class="close">x</a>
+    <h2 style="text-align: left;font-size:15px;font-family:Calibri; background-color: #66b2ff !important; margin-bottom: 20px;position:relative;top:-15px;padding:4px">SINH VIÊN</h2>
+    <a href="#" class="close" style="position: absolute !important; top: -3px !important; background-color: #66b2ff !important; border-color: #66b2ff !important">x</a>
 
     <div id="dialog" title="Thêm Sinh Viên">
         <div>
+            <p style="text-align:center;font-weight:bold;display:block">(Các trường có dấu <span style="color:red">*</span> yêu cầu phải nhập.)<br /></p>
+            <p></p>
             <div>
                 <div class="form_ct">
-                    <label>Mã SV:</label>
-                    <input type="text" name="id" value="" id="Ma" /> (*)
+                    <label style="float:left">Mã SV (<span style="color:red">*</span>)</label>
+                    <input type="text" name="id" value="" id="Ma" style=" margin-left: 4px;"/>
+                    <p class="text-danger1">Vui lòng nhập giá trị cho trường này</p>
                 </div>
                 <div class="form_ct">
-                    <label>Họ tên:</label>
-                    <input type="text" name="id" value="" id="HoTen" /> (*)
-
+                    <label>Họ tên (<span style="color:red">*</span>)</label>
+                    <input type="text" name="id" value="" id="HoTen" />
+                    <p class="text-danger2">Vui lòng nhập giá trị cho trường này</p>
                 </div>
                 <div class="form_ct">
-                    <label>Địa chỉ:</label>
+                    <label>Địa chỉ</label>
                     <select class="form-select" id="form-select" aria-label="Default select example">
-                        <option selected>Thái Bình</option>
+                        <option value="Tỉnh">--- Chọn địa chỉ ---</option>
                         <option value="Hà Nội">Hà Nội</option>
                         <option value="Nghệ An">Nghệ An</option>
                         <option value="Cần Thơ">Cần Thơ</option>
+                        <option value="Huế">Huế</option>
+                        <option value="Quảng Ninh">Quảng Ninh</option>
                     </select>
                 </div>
                 <div class="form_ct">
-                    <label>Khoa:</label>
+                    <label>Khoa</label>
                     <input type="text" name="textbox" value="" id="khoa" />
                 </div>
-                <div class="form_ct">
-                    <label>Ngày sinh:</label>
-                    <input type="date" name="id" value="" id="date" placeholder="dd-mm-yyyy" />
-                </div>
-                <div class="form_ct">
-                    <label>Giới tính:</label>
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male" style="transform:scale(1.3);position:relative;top:2px">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Nam
-                    </label>
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female" style="margin-left: -50px; transform: scale(1.3); position: relative; top: 2px">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Nữ
-                    </label>
-                </div>
+                <div style="">
+                    <div class="form_ct">
+                        <label>Ngày sinh</label>
+                        <input type="date" name="id" value="" id="date" placeholder="dd-mm-yyyy" style="width: auto !important;" />
+                    </div>
+                    <div class="form_ct">
+                        <label>Giới tính</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male" style="transform:scale(1.5);position:relative;top:6px">
+                        <label class="form-check-label" for="flexRadioDefault1" style=" width: 126px;">
+                            Nam
+                        </label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female" style="margin-left: -50px; transform: scale(1.5); position: relative; top: 6px">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Nữ
+                        </label>
+                    </div>
 
-            </div>
-            <div class="form_ct">
-                <label>Lấy bằng:</label>
-                <input type="checkbox" name="checkbox" value="" id="DaLayBang" style="width: 50px; margin-left: -19px; position: relative; top: 2px" />
+                </div>
+                <div class="form_ct">
+                    <label>Lấy bằng</label>
+                    <input type="checkbox" name="checkbox" value="" id="DaLayBang" style="width: 15px; margin-left: -2px; position: relative; top: 8px" />
+
+                </div>
             </div>
         </div>
         <div class="form_ct">
-            <label>Sở thích:</label>
+            <label style="top: 20px; position: relative;">Sở thích</label>
             <div class="form_ct">
                 <div class="main-content">
                     <div class="text-editor-header">
@@ -101,11 +109,26 @@
             </div>
         </div>
         <div>
-            <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color:cornflowerblue;color:white;padding:3px;margin-left:50px !important;border-color:cornflowerblue" />
-            <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color: cornflowerblue; color: white; padding: 3px; border-color: cornflowerblue" />
-            <input type="submit" name="reset" value="Đặt lại" id="reset" style="background-color: cornflowerblue; color: white; padding: 3px; border-color: cornflowerblue" />
+            <input type="submit" name="submit" value="Thêm" id="add_sv" style="background-color: #E0E0E0; background-image: linear-gradient(white, #E0E0E0); font-weight: bold; color: black; padding: 6px 8px 6px 8px; margin-left: 700px !important; border-color: gainsboro; font-family: Calibri " />
+            <input type="submit" name="reset" value="Sửa" id="edit_sv" style="background-color: #E0E0E0; background-image: linear-gradient(white, #E0E0E0); font-weight: bold; color: black; padding: 6px 8px 6px 8px; border-color: gainsboro; font-family: Calibri " />
+            <input type="submit" name="reset" value="Đặt lại" id="reset" style="background-color: #E0E0E0; background-image: linear-gradient(white, #E0E0E0); font-weight: bold; color: black; padding: 6px 8px 6px 8px; border-color: gainsboro; font-family: Calibri " />
         </div>
     </div>
 </body>
 </html>
 <script src="../Jquery/Edit_SV.js"></script>
+<style>
+    #date {
+        width: 353.5px !important;
+    }
+    #add_sv:hover, #edit_sv:hover, #reset:hover{
+        color:red !important
+    }
+    .text-danger1,.text-danger2{
+        margin-left:180px;
+        color:red;
+        font-size:13px;
+        font-style:italic;
+        display:none;
+    }
+</style>

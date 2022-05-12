@@ -26,9 +26,10 @@
                 $("#DaLayBang").prop("checked", false);
             }
             $(".content").html(json[k].Lop);
-            $('#khoa').val(json[k].Khoa);
+            $('#khoa').val(json[k].Khoa);          
         }
     }
+   
     $('#edit_sv').click(function () {
         if ($("#HoTen").val() == "" || $("#Ma").val() == "" || $("#Khoa").val() == "") {
             alert("Vui lòng nhập đủ thông tin !!!");
@@ -68,6 +69,7 @@
             $("tbody tr").remove();
             Load();
             alert("Đã sửa");
+            call_class = 0;
         }
     });
 });

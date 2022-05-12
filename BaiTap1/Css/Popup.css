@@ -22,12 +22,13 @@
     display: none;
 }
 #xmas-popup .popup-content {
-    width: 550px;
-    height: 580px;
+    width: 950px;
+    height: 655px;
     background: white;
     margin: 80px auto;
     position: relative;
     border: 5px solid #fff;
+    margin-top:20px;
 }
 
 .close {

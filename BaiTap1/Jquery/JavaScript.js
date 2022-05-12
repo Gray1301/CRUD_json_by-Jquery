@@ -11,6 +11,7 @@ $(document).ready(function () {
         Add();
         $("tbody tr").remove();
     });
+    
     Load();
     //set phân trang
     //function PhanTrang() {
@@ -92,7 +93,7 @@ function Load() {
     $("td:nth-child(2),td:nth-child(6),td:nth-child(7),td:nth-child(8)").css('text-align', 'left');
     $('tr:even').css('background-color', '#CCE5FF');
     $("td:nth-child(2)").css('color', 'blue');
-    
+   
     //PhanTrang();
     //Add();
     Edit();
@@ -102,10 +103,12 @@ function Add() {
     $('#add_sv').click(function () {
         //check xem người dùng nhập mã có trùng vs mã cũ ko
         var checkMaLap = true;
-        if ($("#Ma").val() == "" || $("#HoTen").val() == "") {
-            alert("Vui lòng nhập đủ thông tin cần thiết ?");
-           
-        }   
+        if ($("#Ma").val() == "") {
+            $(".text-danger1").css("display", "block");
+        }
+        if ($("#HoTen").val() == "") {
+            $(".text-danger2").css("display", "block");
+        }
         for (var k in json) {
             if (json[k].Ma == $("#Ma").val()) {
                 checkMaLap = false;
@@ -115,9 +118,18 @@ function Add() {
         var DaLayBang;
         var GioiTinh;
         if (checkMaLap == false) {
-            alert("Mã bị trùng !");
+            alert("Mã bị trùng!");
         }
-        else if (checkMaLap == true && $("#Ma").val() != "" || $("#HoTen").val() != "") {
+        //else if ($("#HoTen").val() == "" && $("#Ma").val() == "") {
+        //    alert("Bạn chưa nhập thông tin cần thiết")
+        //}
+        else if ($("#Ma").val() == "" && $("#HoTen").val() != "") {
+            alert("Bạn chưa nhập mã")
+        }
+        else if ($("#Ma").val() != "" && $("#HoTen").val() == "") {
+            alert("Bạn chưa nhập họ tên")
+        }
+        else if (checkMaLap == true && $("#Ma").val() != "" && $("#HoTen").val() != "") {
             if ($("#DaLayBang").prop("checked") == true) {
                 DaLayBang = "true";
             }
@@ -131,6 +143,7 @@ function Add() {
             if (GioiTinh == "Female") {
                 GioiTinh = "Nữ";
             }
+            //Chuyển đổi hiển thị ngày cho đúng dd/mm/yyyy
             var NgaySinh = $("#date").val();
             const words = NgaySinh.split('-');
             var AddNgaySinh = words[2] + "-" + words[1] + "-" + words[0];

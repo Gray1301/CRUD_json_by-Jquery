@@ -35,9 +35,9 @@
     height: 5%;
 }
 
-.nd2 img {
-    margin: 0px;
-}
+    .nd2 img {
+        margin: 0px;
+    }
 
 .nd2_p2 {
     margin-top: 12%;
@@ -92,7 +92,7 @@
                 text-decoration: none;
                 color: Highlight;
                 font-weight: bold;
-                font-family: Calibri;
+                font-family: 'Times New Roman';
                 margin-left: 10px
             }
 
@@ -130,7 +130,7 @@
 }
 
 .search1 {
-    height:25px;
+    height: 25px;
     border-color: deepskyblue;
     font-style: italic;
     background-color: #CCFFFF;
@@ -170,8 +170,8 @@ th {
 }
 
 td img {
-    vertical-align:middle;
-    margin-top:10px;
+    vertical-align: middle;
+    margin-top: 10px;
     width: 13px;
     height: 13px;
 }
@@ -186,28 +186,31 @@ td img {
 }
 
 .form_ct {
-    margin-top: 19px;
+    margin-top: 5px;
     margin-left: 30px !important;
-   
 }
-.form_ct input{
-    width:350px;
-    border-radius:4px;
-    border-width:1px
-}
+
+    .form_ct input {
+        width: 650px;
+        height:23px;
+    }
+
 label {
     width: 100px;
     display: inline-block;
+    width: 180px;
 }
 
 .form-select {
-    width: 358px !important;
-    border-radius: 4px
+    width: 658px !important;
+    height:30px;
 }
-.form-check-input{
-    width:10px !important;   
- 
+
+.form-check-input {
+    width: 10px !important;
 }
-#DaLayBang{
-    width:10px
+
+#DaLayBang {
+    width: 10px
 }
+
